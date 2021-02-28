@@ -1,4 +1,4 @@
-let res = fetch(`https://puzzle-task.t.javascript.ninja/pic`)
+let res = fetch(`http://puzzle-task.t.javascript.ninja/pic`)
   .then((response) => {
     res = response.json();
     return res;
@@ -9,7 +9,7 @@ let res = fetch(`https://puzzle-task.t.javascript.ninja/pic`)
 
     return;
   })
-  .catch((err) => console.log("Ошибка: " + err));
+  .catch((err) => console.log('Ошибка: ' + err));
 
 function getData(arg) {
   const pieces = arg;
@@ -23,13 +23,13 @@ function solvePuzzle(pieces) {
   let actualPiece = pieces[0];
 
   function setFirstPiece(piece) {
-    if (piece["edges"]["left"] === null && piece["edges"]["top"] === null)
+    if (piece['edges']['left'] === null && piece['edges']['top'] === null)
       return;
     for (let i = 0; i < 3; i++) {
       let changedPiece = rotate(piece);
       if (
-        changedPiece["edges"]["left"] === null &&
-        changedPiece["edges"]["top"] === null
+        changedPiece['edges']['left'] === null &&
+        changedPiece['edges']['top'] === null
       ) {
         piece = changedPiece;
         return piece;
@@ -38,22 +38,22 @@ function solvePuzzle(pieces) {
   }
 
   function rotate(piece) {
-    let a = piece["edges"]["top"];
+    let a = piece['edges']['top'];
 
-    piece["edges"]["top"] = piece["edges"]["left"];
-    piece["edges"]["left"] = piece["edges"]["bottom"];
-    piece["edges"]["bottom"] = piece["edges"]["right"];
-    piece["edges"]["right"] = a;
+    piece['edges']['top'] = piece['edges']['left'];
+    piece['edges']['left'] = piece['edges']['bottom'];
+    piece['edges']['bottom'] = piece['edges']['right'];
+    piece['edges']['right'] = a;
 
     return piece;
   }
 
   function checkMatch(actualPiece, piece, actualEdge, edge) {
-    edgeTypeId = actualPiece["edges"][actualEdge]["edgeTypeId"];
+    edgeTypeId = actualPiece['edges'][actualEdge]['edgeTypeId'];
 
     if (
-      piece["edges"][edge] != null &&
-      piece["edges"][edge]["edgeTypeId"] === edgeTypeId
+      piece['edges'][edge] != null &&
+      piece['edges'][edge]['edgeTypeId'] === edgeTypeId
     ) {
       return true;
     } else return false;
@@ -137,14 +137,14 @@ function solvePuzzle(pieces) {
     let result = [];
     result = row;
     for (let i = 0; i < 9; i++) {
-      let newRow = findRow(row, "bottom", "top");
+      let newRow = findRow(row, 'bottom', 'top');
       row = newRow;
       result = result.concat(row);
     }
     return result;
   }
 
-  let puzzle = solveAllPuzzle("right", "left");
+  let puzzle = solveAllPuzzle('right', 'left');
   console.log(puzzle);
   return puzzle;
 }
