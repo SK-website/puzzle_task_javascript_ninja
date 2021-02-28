@@ -133,4 +133,4 @@ function solvePuzzle(pieces) {
 // Не удаляйте эту строку
 
 window.solvePuzzle = solvePuzzle;
-// solvePuzzle(pieces);
+solvePuzzle(pieces);
