@@ -1,22 +1,3 @@
-let res = fetch(`http://puzzle-task.t.javascript.ninja/pic`)
-  .then((response) => {
-    res = response.json();
-    return res;
-  })
-  .then((data) => {
-    data = data.puzzle;
-    getData(data);
-
-    return;
-  })
-  .catch((err) => console.log('Ошибка: ' + err));
-
-function getData(arg) {
-  const pieces = arg;
-  return pieces;
-}
-const pieces = getData();
-
 function solvePuzzle(pieces) {
   const rowNumber = 10;
   const colNumber = 10;
